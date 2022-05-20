@@ -5,8 +5,8 @@ using System.Net;
 
 string championsUrl = "http://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json"; // 12.9 is current patch
 string masteryUrl = "https://eun1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" +
-    "<your id>" +
-    "?api_key=<api_key>";
+    "ID" +
+    "?api_key=<API_KEY>";
 
 // https://<region>.api.riotgames.com/lol/summoner/v4/summoners/by-name/<name>?api_key=<key> to get <your id>
 
@@ -43,7 +43,12 @@ Console.WriteLine("Total of " + points + " points. \n");
 
 foreach (var item in masteryInfo)
 {
-    Console.WriteLine(ID_Name[item["championId"].ToString()] + " - " + item["championPoints"]);
+    Console.Write(ID_Name[item["championId"].ToString()] + " - " + item["championPoints"]);
+    if (bool.Parse(item["chestGranted"].ToString()))
+    {
+        Console.WriteLine(" - Chest NOT available");
+    }
+    else Console.WriteLine(" - Chest available");
 }
 
 

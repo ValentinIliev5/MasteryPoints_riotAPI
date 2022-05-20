@@ -5,10 +5,10 @@ using System.Net;
 
 string championsUrl = "http://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json"; // 12.9 is current patch
 string masteryUrl = "https://eun1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" +
-    "ID" +
+    "<ID>" +
     "?api_key=<API_KEY>";
 
-// https://<region>.api.riotgames.com/lol/summoner/v4/summoners/by-name/<name>?api_key=<key> to get <your id>
+// TO GET YOUR <ID> : https://<region>.api.riotgames.com/lol/summoner/v4/summoners/by-name/<name>?api_key=<key>  
 
 
 var client = new WebClient();

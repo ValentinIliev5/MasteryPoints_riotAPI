@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "udcmx/oJPJc6zF7ILobk+3s8YCiRCl2YhZgGno+I+trcU4n/ycnBuoydGBFhJOZrwOUKrlyVPcEQz986NTVoWg==",
+  "success": true,
+  "projectFilePath": "C:\\MasteryPoints_riotAPI\\RiotAPIConsole\\RiotAPIConsole.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\justw\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

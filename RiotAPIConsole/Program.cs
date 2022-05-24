@@ -23,7 +23,7 @@ JToken idToken = JToken.Parse(body);
 string championsUrl = "http://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json"; // 12.9 is current patch
 string masteryUrl = "https://eun1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" +
     idToken["id"].ToString() +
-    "?api_key=RGAPI-c8d7c8b0-69d2-48b5-9b92-eb09c7dce56a";
+    "?api_key=<api_key>";
 
  
 body = client.DownloadString(championsUrl);

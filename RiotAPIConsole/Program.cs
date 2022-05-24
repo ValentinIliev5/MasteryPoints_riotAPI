@@ -3,17 +3,29 @@ using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Net;
 
-string championsUrl = "http://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json"; // 12.9 is current patch
-string masteryUrl = "https://eun1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" +
-    "ID" +
-    "?api_key=<API_KEY>";
+Console.Write("Nickname: ");
+string nickname = Console.ReadLine();
+Console.WriteLine();
 
-// https://<region>.api.riotgames.com/lol/summoner/v4/summoners/by-name/<name>?api_key=<key> to get <your id>
+string accInfoUrl = "https://eun1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + nickname + "?api_key=<api_key>";
+//eun1 is for EUNE server. https://leagueoflegends.fandom.com/wiki/Servers
+
 
 
 var client = new WebClient();
 
 string body = "";
+body = client.DownloadString(accInfoUrl);
+
+JToken idToken = JToken.Parse(body);
+
+
+string championsUrl = "http://ddragon.leagueoflegends.com/cdn/12.9.1/data/en_US/champion.json"; // 12.9 is current patch
+string masteryUrl = "https://eun1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" +
+    idToken["id"].ToString() +
+    "?api_key=RGAPI-c8d7c8b0-69d2-48b5-9b92-eb09c7dce56a";
+
+
 body = client.DownloadString(championsUrl);
 
 JObject championsData = JObject.Parse(body);
@@ -43,7 +55,7 @@ Console.WriteLine("Total of " + points + " points. \n");
 
 foreach (var item in masteryInfo)
 {
-    Console.Write(ID_Name[item["championId"].ToString()] + " - " + item["championPoints"]);
+    Console.Write(ID_Name[item["championId"].ToString()] + " - " + "Level "  +item["championLevel"] + " - "+ item["championPoints"]);
     if (bool.Parse(item["chestGranted"].ToString()))
     {
         Console.WriteLine(" - Chest NOT available");
